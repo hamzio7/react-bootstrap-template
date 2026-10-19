@@ -1,0 +1,140 @@
+@import "bootstrap/scss/functions";
+
+$primary:   #ff6b35;
+$secondary: #6a0dad;
+$success:   #2d9c5f;
+$info:      #2a9d8f;
+$warning:   #ffa600;
+$danger:    #e63946;
+$light:     #fff8e7;
+$dark:      #2d1810;
+
+$theme-colors: (
+        "primary": $primary, "secondary": $secondary, "success": $success,
+        "info": $info, "warning": $warning, "danger": $danger,
+        "light": $light, "dark": $dark
+);
+
+$body-bg:              #fdf6e3;
+$body-color:           #2d1810;
+$body-secondary-color: #7a6355;
+$body-secondary-bg:    #f7ecd0;
+
+$font-family-sans-serif: 'Bricolage Grotesque', 'Fredoka', system-ui, sans-serif;
+$headings-font-family:   'Bricolage Grotesque', sans-serif;
+$headings-font-weight:   800;
+$font-size-base:         1.05rem;
+
+$border-radius:    1.25rem;
+$border-radius-sm: 0.75rem;
+$border-radius-lg: 1.75rem;
+$border-radius-xl: 2rem;
+$border-radius-pill: 50rem;
+$border-color: #e5d5b0;
+$box-shadow-sm: 3px 3px 0 #2d1810;
+$box-shadow:    4px 4px 0 #2d1810;
+$box-shadow-lg: 8px 8px 0 #2d1810;
+
+$link-color: $secondary;
+$link-hover-color: $primary;
+$link-decoration: underline;
+$link-decoration-thickness: 2px;
+$link-underline-offset: 3px;
+
+$input-bg: #fff8e7;
+$input-border-color: #2d1810;
+$input-border-width: 2px;
+$input-focus-border-color: $primary;
+$input-focus-box-shadow: 4px 4px 0 $primary;
+
+$card-bg: #fff8e7;
+$card-border-color: #2d1810;
+$card-border-width: 2px;
+$card-border-radius: $border-radius-lg;
+
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/bootstrap";
+
+// STANDARD UTILITIES
+.divider {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.75rem; margin: 2rem 0; color: $secondary; font-size: 1.5rem;
+  font-family: $headings-font-family;
+  font-weight: 900;
+  &::before, &::after {
+    content: ""; flex: 1; height: 3px;
+    background: repeating-linear-gradient(
+            to right,
+            $secondary 0, $secondary 8px,
+            $primary 8px, $primary 16px,
+            $warning 16px, $warning 24px
+    );
+    border-radius: 2px;
+  }
+}
+.text-eyebrow {
+  text-transform: uppercase; letter-spacing: 0.15em;
+  font-size: 0.75rem; font-weight: 900; color: $secondary;
+  font-family: $headings-font-family;
+}
+.text-display {
+  font-family: $headings-font-family; font-weight: 900;
+  line-height: 1.0; letter-spacing: -0.02em; color: $body-color;
+}
+.surface {
+  background-color: #fff8e7; border: 2px solid #2d1810;
+  border-radius: $border-radius-lg; padding: 1.5rem;
+  box-shadow: 4px 4px 0 #2d1810;
+}
+.accent-text {
+  color: $primary !important;
+  background: linear-gradient(180deg, transparent 60%, rgba($warning, 0.5) 60%);
+  padding: 0 0.1em;
+}
+.hero-glow {
+  position: relative; isolation: isolate;
+  &::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+            radial-gradient(circle at 15% 25%, rgba($primary, 0.15), transparent 40%),
+            radial-gradient(circle at 85% 75%, rgba($secondary, 0.12), transparent 40%),
+            radial-gradient(circle at 50% 50%, rgba($warning, 0.1), transparent 50%);
+    pointer-events: none; z-index: -1;
+  }
+}
+.tag {
+  display: inline-flex; align-items: center; padding: 0.35em 0.85em;
+  font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em;
+  text-transform: uppercase; border-radius: $border-radius-pill;
+  background-color: $warning; color: #2d1810;
+  border: 2px solid #2d1810;
+  box-shadow: 2px 2px 0 #2d1810;
+}
+.glow {
+  box-shadow: 4px 4px 0 $secondary;
+  transition: all 0.15s ease;
+  &:hover { box-shadow: 2px 2px 0 $secondary; transform: translate(2px, 2px); }
+}
+
+// SPECIFICITY FIX
+[data-theme="funky"] {
+  .navbar {
+    --bs-navbar-color: #{$body-color};
+    --bs-navbar-hover-color: #{$secondary};
+    --bs-navbar-active-color: #{$secondary};
+    --bs-navbar-brand-color: #{$body-color};
+    --bs-navbar-brand-hover-color: #{$secondary};
+  }
+  .navbar-brand { font-weight: 900; letter-spacing: -0.02em; }
+  .nav-link {
+    font-weight: 700;
+    &:hover { color: $secondary; }
+    &.active { color: $secondary; }
+  }
+  .nav-tabs {
+    --bs-nav-link-color: #{$body-secondary-color};
+    --bs-nav-link-hover-color: #{$secondary};
+    --bs-nav-tabs-link-active-color: #{$secondary};
+  }
+}

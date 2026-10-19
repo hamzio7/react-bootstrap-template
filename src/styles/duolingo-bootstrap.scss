@@ -1,0 +1,119 @@
+@import "bootstrap/scss/functions";
+
+$primary:   #58cc02;
+$secondary: #777777;
+$success:   #58cc02;
+$info:      #1cb0f6;
+$warning:   #ff9600;
+$danger:    #ff4b4b;
+$light:     #f7f7f7;
+$dark:      #3c3c3c;
+
+$theme-colors: (
+        "primary": $primary, "secondary": $secondary, "success": $success,
+        "info": $info, "warning": $warning, "danger": $danger,
+        "light": $light, "dark": $dark
+);
+
+$body-bg:              #ffffff;
+$body-color:           #3c3c3c;
+$body-secondary-color: #777777;
+$body-secondary-bg:    #f7f7f7;
+
+$font-family-sans-serif: 'Nunito', 'DIN Round Pro', system-ui, sans-serif;
+$headings-font-family:   'Nunito', 'Feather Bold', sans-serif;
+$headings-font-weight:   800;
+$font-size-base:         1rem;
+
+$border-radius:    0.75rem;
+$border-radius-sm: 0.5rem;
+$border-radius-lg: 1rem;
+$border-radius-xl: 1.25rem;
+$border-radius-pill: 9999px;
+$border-color: #e5e5e5;
+$border-width: 2px;
+$box-shadow-sm: 0 2px 0 #e5e5e5;
+$box-shadow:    0 4px 0 #e5e5e5;
+$box-shadow-lg: 0 6px 0 #e5e5e5;
+
+$link-color: #1cb0f6;
+$link-hover-color: #1899d6;
+$link-decoration: underline;
+$link-decoration-thickness: 2px;
+$link-underline-offset: 3px;
+
+$input-bg: #ffffff;
+$input-border-color: #e5e5e5;
+$input-border-width: 2px;
+$input-color: #3c3c3c;
+$input-placeholder-color: #afafaf;
+$input-focus-border-color: $info;
+$input-focus-box-shadow: 0 0 0 3px rgba($info, 0.2);
+
+$card-bg: #ffffff;
+$card-border-color: #e5e5e5;
+$card-border-width: 2px;
+$card-border-radius: 1rem;
+
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/bootstrap";
+
+.divider {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.75rem; margin: 2rem 0; color: $primary; font-size: 1.25rem;
+  &::before, &::after {
+    content: ""; flex: 1; height: 2px; background: #e5e5e5; border-radius: 2px;
+  }
+}
+.text-eyebrow {
+  text-transform: uppercase; letter-spacing: 0.12em;
+  font-size: 0.72rem; font-weight: 800; color: $primary;
+}
+.text-display {
+  font-family: $headings-font-family; font-weight: 800;
+  line-height: 1.1; letter-spacing: -0.01em; color: #3c3c3c;
+}
+.surface {
+  background-color: #ffffff; border: 2px solid #e5e5e5;
+  border-radius: $border-radius-lg; padding: 1.5rem;
+  box-shadow: 0 4px 0 #e5e5e5;
+}
+.accent-text { color: $primary !important; }
+.hero-glow {
+  position: relative; isolation: isolate;
+  &::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba($primary, 0.1), transparent 60%);
+    pointer-events: none; z-index: -1;
+  }
+}
+.tag {
+  display: inline-flex; align-items: center; padding: 0.3em 0.8em;
+  font-size: 0.7rem; font-weight: 800; letter-spacing: 0.06em;
+  text-transform: uppercase; border-radius: $border-radius-pill;
+  background-color: rgba($primary, 0.15); color: $primary;
+  border: 2px solid rgba($primary, 0.3);
+}
+.glow { box-shadow: 0 4px 0 #e5e5e5, 0 8px 20px rgba($primary, 0.2); }
+
+[data-theme="duolingo"] {
+  .navbar {
+    --bs-navbar-color: #3c3c3c;
+    --bs-navbar-hover-color: #{$primary};
+    --bs-navbar-active-color: #{$primary};
+    --bs-navbar-brand-color: #3c3c3c;
+    --bs-navbar-brand-hover-color: #{$primary};
+  }
+  .nav-tabs {
+    --bs-nav-link-color: #777777;
+    --bs-nav-link-hover-color: #{$primary};
+    --bs-nav-tabs-link-active-color: #3c3c3c;
+    --bs-nav-tabs-link-active-border-color: #{$primary};
+  }
+  .nav-link {
+    font-weight: 700;
+    &:hover { color: $primary; }
+    &.active { color: $primary; }
+  }
+}

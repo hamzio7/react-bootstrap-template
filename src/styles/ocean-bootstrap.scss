@@ -1,0 +1,110 @@
+@import "bootstrap/scss/functions";
+
+$primary:   #14b8a6;
+$secondary: #38bdf8;
+$success:   #22c55e;
+$info:      #06b6d4;
+$warning:   #f59e0b;
+$danger:    #f43f5e;
+$light:     #b8d4e3;
+$dark:      #06141f;
+
+$theme-colors: (
+        "primary": $primary, "secondary": $secondary, "success": $success,
+        "info": $info, "warning": $warning, "danger": $danger,
+        "light": $light, "dark": $dark
+);
+
+$body-bg:              #06141f;
+$body-color:           #b8d4e3;
+$body-secondary-color: #6b8a9a;
+$body-secondary-bg:    #0c2433;
+
+$font-family-sans-serif: 'Work Sans', system-ui, sans-serif;
+$headings-font-family:   'Work Sans', sans-serif;
+$headings-font-weight:   500;
+
+$border-radius: 0.5rem;
+$border-radius-sm: 0.25rem;
+$border-radius-lg: 0.75rem;
+$border-color: #1a3a4d;
+$box-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+$box-shadow:    0 4px 16px rgba(0, 0, 0, 0.4);
+$box-shadow-lg: 0 10px 32px rgba(0, 0, 0, 0.5);
+
+$link-color: $secondary;
+$link-hover-color: #7dd3fc;
+$link-decoration: none;
+
+$input-bg: #0c2433;
+$input-border-color: #1a3a4d;
+$input-color: #b8d4e3;
+$input-placeholder-color: #4a6a7a;
+$input-focus-border-color: $primary;
+$input-focus-box-shadow: 0 0 0 3px rgba($primary, 0.2);
+
+$card-bg: #0c2433;
+$card-border-color: #1a3a4d;
+$card-border-radius: 0.75rem;
+
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/bootstrap";
+
+.divider {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.75rem; margin: 2rem 0; color: $primary; font-size: 1.1rem;
+  &::before, &::after {
+    content: ""; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, #1a3a4d, transparent);
+  }
+}
+.text-eyebrow {
+  text-transform: uppercase; letter-spacing: 0.18em;
+  font-size: 0.72rem; font-weight: 500; color: $primary;
+}
+.text-display {
+  font-family: $headings-font-family; font-weight: 500;
+  line-height: 1.15; letter-spacing: -0.01em; color: #d8e8f3;
+}
+.surface {
+  background-color: #0c2433; border: 1px solid #1a3a4d;
+  border-radius: $border-radius-lg; padding: 1.5rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.accent-text { color: $secondary !important; }
+.hero-glow {
+  position: relative; isolation: isolate;
+  &::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+            radial-gradient(ellipse at 30% 20%, rgba($secondary, 0.15), transparent 50%),
+            radial-gradient(ellipse at 70% 80%, rgba($primary, 0.12), transparent 50%);
+    pointer-events: none; z-index: -1;
+  }
+}
+.tag {
+  display: inline-flex; align-items: center; padding: 0.3em 0.75em;
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; border-radius: $border-radius-pill;
+  background-color: rgba($primary, 0.12); color: $primary;
+  border: 1px solid rgba($primary, 0.3);
+}
+.glow { box-shadow: 0 0 0 1px rgba($primary, 0.3), 0 8px 24px rgba($primary, 0.15); }
+
+[data-theme="ocean"] {
+  .navbar {
+    --bs-navbar-color: #{$body-color};
+    --bs-navbar-hover-color: #{$primary};
+    --bs-navbar-active-color: #{$secondary};
+    --bs-navbar-brand-color: #{$body-color};
+    --bs-navbar-brand-hover-color: #{$secondary};
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2314b8a6' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+  .nav-tabs {
+    --bs-nav-link-color: #{$body-secondary-color};
+    --bs-nav-link-hover-color: #{$primary};
+    --bs-nav-tabs-link-active-color: #{$secondary};
+  }
+  .nav-link { &:hover { color: $primary; } &.active { color: $secondary; } }
+}

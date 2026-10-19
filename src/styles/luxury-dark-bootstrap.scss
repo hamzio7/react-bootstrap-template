@@ -1,0 +1,208 @@
+@import "bootstrap/scss/functions";
+
+// --- Palette ---
+$primary: #d4b483;
+$secondary: #8a8375;
+$success: #5c8a6b;
+$info: #7a8fa0;
+$warning: #e0a94a;
+$danger: #a83648;
+$light: #e8e2d4;
+$dark: #0e0d0b;
+
+$theme-colors: (
+        "primary": $primary, "secondary": $secondary, "success": $success,
+        "info": $info, "warning": $warning, "danger": $danger,
+        "light": $light, "dark": $dark
+);
+
+// --- Body ---
+$body-bg: #121110;
+$body-color: #d8d2c3;
+$body-secondary-color: #8f887a;
+$body-secondary-bg: #1a1815;
+$body-tertiary-color: #6a655a;
+
+// --- Typography ---
+$font-family-sans-serif: 'Inter', system-ui, -apple-system, sans-serif;
+$font-family-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+$headings-font-family: 'Playfair Display', Georgia, serif;
+$headings-font-weight: 500;
+$headings-color: #f0e9d8;
+$headings-line-height: 1.2;
+$font-size-base: 1.02rem;
+
+// --- Radius & Borders ---
+$border-radius: 0.25rem;
+$border-radius-sm: 0.15rem;
+$border-radius-lg: 0.4rem;
+$border-color: #2a2721;
+
+// --- Shadows ---
+$box-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+$box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+$box-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.6);
+
+// --- Links ---
+$link-color: #d4b483;
+$link-hover-color: #f0d7a4;
+$link-decoration: none;
+
+// --- Forms ---
+$input-bg: #161412;
+$input-border-color: #2f2b24;
+$input-color: #e8e2d4;
+$input-placeholder-color: #6a655a;
+$input-focus-border-color: $primary;
+$input-focus-box-shadow: 0 0 0 0.2rem rgba($primary, 0.15);
+
+// --- Cards ---
+$card-bg: #1a1815;
+$card-border-color: #2a2721;
+$card-border-radius: $border-radius-lg;
+
+// --- Bootstrap ---
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/bootstrap";
+
+// ============================================================
+// STANDARD UTILITIES
+// ============================================================
+
+body {
+  background-image: radial-gradient(rgba(212, 180, 131, 0.03) 1px, transparent 1px);
+  background-size: 28px 28px;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #f0e9d8;
+  letter-spacing: 0.005em;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem 0;
+  color: $primary;
+  font-size: 1rem;
+
+  &::before,
+  &::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #3a3530, transparent);
+  }
+}
+
+.text-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: $primary;
+}
+
+.text-display {
+  font-family: $font-family-serif;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: 0.005em;
+  color: #f0e9d8;
+}
+
+.surface {
+  background-color: #1a1815;
+  border: 1px solid #2a2721;
+  border-radius: $border-radius-lg;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.accent-text {
+  color: $primary !important;
+}
+
+.hero-glow {
+  position: relative;
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba($primary, 0.14) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3em 0.7em;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  background-color: rgba($primary, 0.08);
+  color: $primary;
+  border: 1px solid rgba($primary, 0.3);
+}
+
+.glow {
+  box-shadow: 0 0 0 1px rgba($primary, 0.2), 0 8px 24px rgba($primary, 0.15);
+}
+
+// ============================================================
+// DARK MODE SPECIFICITY FIX (scoped to this theme)
+// ============================================================
+
+[data-theme="luxury-dark"] {
+
+  // --- Navbar ---
+  // Set variables directly on .navbar so they beat Bootstrap's own declaration.
+  .navbar {
+    --bs-navbar-color: #{$body-color};
+    --bs-navbar-hover-color: #{$primary};
+    --bs-navbar-active-color: #{$primary};
+    --bs-navbar-brand-color: #{$body-color};
+    --bs-navbar-brand-hover-color: #{$primary};
+    --bs-navbar-toggler-border-color: #{rgba($primary, 0.3)};
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2300f0ff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+
+  // --- Tabs (Bootstrap sets --bs-nav-link-color on .nav) ---
+  .nav-tabs {
+    --bs-nav-link-color: #{$body-secondary-color};
+    --bs-nav-link-hover-color: #{$primary};
+    --bs-nav-tabs-link-active-color: #{$primary};
+    --bs-nav-tabs-link-active-bg: #{#0f1420};
+    --bs-nav-tabs-link-active-border-color: #{rgba($primary, 0.3)};
+
+    border-bottom-color: rgba($primary, 0.2);
+  }
+
+  // --- Pills ---
+  .nav-pills {
+    --bs-nav-pills-link-active-bg: #{$primary};
+    --bs-nav-pills-link-active-color: #05070d;
+  }
+
+  .nav-link {
+    // Broad rule is safe here — no !important, variables still drive hover/active.
+    &:hover {
+      color: $primary;
+    }
+
+    &.active {
+      color: $primary;
+    }
+  }
+}

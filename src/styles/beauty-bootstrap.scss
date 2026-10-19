@@ -1,0 +1,131 @@
+@import "bootstrap/scss/functions";
+
+$primary:   #e91e63;
+$secondary: #2c1820;
+$success:   #16a34a;
+$info:      #d946a7;
+$warning:   #fbbf24;
+$danger:    #dc2626;
+$light:     #fff5f7;
+$dark:      #2c1820;
+
+$theme-colors: (
+        "primary": $primary, "secondary": $secondary, "success": $success,
+        "info": $info, "warning": $warning, "danger": $danger,
+        "light": $light, "dark": $dark
+);
+
+$body-bg:              #fff5f7;
+$body-color:           #2c1820;
+$body-secondary-color: #8a6870;
+$body-secondary-bg:    #fce8ec;
+
+$font-family-sans-serif: 'Jost', system-ui, sans-serif;
+$font-family-serif:      'Cormorant Garamond', Georgia, serif;
+$headings-font-family:   'Cormorant Garamond', Georgia, serif;
+$headings-font-weight:   500;
+$headings-color:         #2c1820;
+$font-size-base:         1.02rem;
+
+$border-radius:    0.75rem;
+$border-radius-sm: 0.5rem;
+$border-radius-lg: 1rem;
+$border-radius-xl: 1.5rem;
+$border-radius-pill: 9999px;
+$border-color: #f5d5de;
+$box-shadow-sm: 0 1px 2px rgba(233, 30, 99, 0.06);
+$box-shadow:    0 4px 16px rgba(233, 30, 99, 0.1);
+$box-shadow-lg: 0 12px 40px rgba(233, 30, 99, 0.15);
+
+$link-color: $primary;
+$link-hover-color: #be185d;
+$link-decoration: none;
+
+$input-bg: #ffffff;
+$input-border-color: #f5d5de;
+$input-color: #2c1820;
+$input-placeholder-color: #b8929c;
+$input-focus-border-color: $primary;
+$input-focus-box-shadow: 0 0 0 3px rgba($primary, 0.15);
+
+$card-bg: #ffffff;
+$card-border-color: #f5d5de;
+$card-border-radius: 1rem;
+
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/bootstrap";
+
+.divider {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1rem; margin: 2.5rem 0; color: $primary; font-size: 1.25rem;
+  font-family: $headings-font-family;
+  &::before, &::after {
+    content: ""; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, #f5d5de, transparent);
+  }
+}
+.text-eyebrow {
+  text-transform: uppercase; letter-spacing: 0.25em;
+  font-size: 0.72rem; font-weight: 500; color: $primary;
+}
+.text-display {
+  font-family: $headings-font-family; font-weight: 500;
+  line-height: 1.05; letter-spacing: 0.005em; color: #2c1820;
+}
+.surface {
+  background-color: #ffffff;
+  border: 1px solid #f5d5de;
+  border-radius: $border-radius-lg; padding: 1.75rem;
+  box-shadow: 0 4px 16px rgba(233, 30, 99, 0.08);
+}
+.accent-text { color: $primary !important; }
+.hero-glow {
+  position: relative; isolation: isolate;
+  &::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+            radial-gradient(circle at 20% 30%, rgba($primary, 0.12), transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba($info, 0.1), transparent 50%),
+            radial-gradient(circle at 50% 90%, rgba($warning, 0.06), transparent 50%);
+    pointer-events: none; z-index: -1;
+  }
+}
+.tag {
+  display: inline-flex; align-items: center; padding: 0.3em 0.85em;
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; border-radius: $border-radius-pill;
+  background-color: rgba($primary, 0.1); color: $primary;
+  border: 1px solid rgba($primary, 0.25);
+}
+.glow {
+  box-shadow: 0 10px 30px rgba($primary, 0.25);
+  transition: transform 0.2s ease;
+  &:hover { transform: translateY(-2px); }
+}
+
+[data-theme="beauty"] {
+  .navbar {
+    --bs-navbar-color: #2c1820;
+    --bs-navbar-hover-color: #{$primary};
+    --bs-navbar-active-color: #{$primary};
+    --bs-navbar-brand-color: #2c1820;
+    --bs-navbar-brand-hover-color: #{$primary};
+  }
+  .navbar-brand {
+    font-family: $headings-font-family;
+    letter-spacing: 0.05em; font-size: 1.5rem; font-weight: 500;
+  }
+  .nav-tabs {
+    --bs-nav-link-color: #8a6870;
+    --bs-nav-link-hover-color: #{$primary};
+    --bs-nav-tabs-link-active-color: #{$primary};
+    --bs-nav-tabs-link-active-border-color: #{$primary};
+  }
+  .nav-link {
+    letter-spacing: 0.1em; font-size: 0.85rem;
+    text-transform: uppercase;
+    &:hover { color: $primary; }
+    &.active { color: $primary; }
+  }
+}

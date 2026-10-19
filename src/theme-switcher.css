@@ -1,0 +1,101 @@
+.theme-switcher {
+    border-radius: calc(var(--bs-border-radius, 0.375rem) * 1.5);
+    border-color: color-mix(in srgb, currentColor 12%, transparent);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+/* ─── Arrows ─────────────────────────────────────────────── */
+
+.theme-switcher__btn {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    font-size: 1.4rem;
+    line-height: 1;
+    font-weight: 500;
+    border: 1px solid transparent;
+    background-color: transparent;
+    color: inherit;
+    border-radius: var(--bs-border-radius, 0.375rem);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:
+            background-color 180ms cubic-bezier(0.4, 0, 0.2, 1),
+            border-color     180ms cubic-bezier(0.4, 0, 0.2, 1),
+            transform        140ms cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.theme-switcher__btn:hover {
+    color: inherit;
+    background-color: color-mix(in srgb, currentColor 14%, transparent);
+    border-color: color-mix(in srgb, currentColor 18%, transparent);
+}
+
+/* Subtle directional nudge — delete these two rules for a calmer feel */
+.theme-switcher__btn:first-child:not(:active):hover {
+    transform: translateX(-2px);
+}
+.theme-switcher__btn:last-child:not(:active):hover {
+    transform: translateX(2px);
+}
+
+.theme-switcher__btn:active {
+    transform: scale(0.92);
+}
+
+.theme-switcher .theme-switcher__btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 28%, transparent);
+}
+
+/* ─── Label ──────────────────────────────────────────────── */
+
+.theme-switcher__label {
+    min-width: 9.5rem;
+    padding: 0 0.25rem;
+    line-height: 1.15;
+    user-select: none;
+    text-align: center;
+}
+
+.theme-switcher__eyebrow {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-weight: 700;
+    opacity: 0.5;
+    margin-bottom: 0.1rem;
+}
+
+.theme-switcher__name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+}
+
+.theme-switcher__count {
+    font-size: 0.65rem;
+    opacity: 0.45;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.08em;
+    margin-top: 0.1rem;
+}
+
+/* ─── Reduced motion ─────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+    .theme-switcher__btn,
+    .theme-switcher__btn:first-child:not(:active):hover,
+    .theme-switcher__btn:last-child:not(:active):hover,
+    .theme-switcher__btn:active {
+        transition: none;
+        transform: none;
+    }
+}

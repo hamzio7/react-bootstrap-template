@@ -1,0 +1,138 @@
+@import "bootstrap/scss/functions";
+
+$primary:   #c9a961;
+$secondary: #1e3a5f;
+$success:   #2d5a3d;
+$info:      #4a6d8c;
+$warning:   #d4a53a;
+$danger:    #8b2635;
+$light:     #faf7f0;
+$dark:      #1a2332;
+
+$theme-colors: (
+        "primary": $primary, "secondary": $secondary, "success": $success,
+        "info": $info, "warning": $warning, "danger": $danger,
+        "light": $light, "dark": $dark
+);
+
+$body-bg:              #faf7f0;
+$body-color:           #2a2a2a;
+$body-secondary-color: #6b665a;
+$body-secondary-bg:    #f2ede1;
+
+$font-family-sans-serif: 'Inter', system-ui, sans-serif;
+$font-family-serif:      'EB Garamond', Georgia, serif;
+$headings-font-family:   'EB Garamond', Georgia, serif;
+$headings-font-weight:   500;
+$headings-color:         #1a2332;
+$font-size-base:         1.05rem;
+
+$border-radius: 0.125rem;
+$border-radius-sm: 0.0625rem;
+$border-radius-lg: 0.25rem;
+$border-color: #e0d5b8;
+$box-shadow-sm: 0 1px 2px rgba(30, 58, 95, 0.06);
+$box-shadow:    0 2px 8px rgba(30, 58, 95, 0.08);
+$box-shadow-lg: 0 8px 24px rgba(30, 58, 95, 0.12);
+
+$link-color: $secondary;
+$link-hover-color: $primary;
+$link-decoration: underline;
+$link-decoration-thickness: 1px;
+$link-underline-offset: 3px;
+
+$input-bg: #ffffff;
+$input-border-color: #d4c9ae;
+$input-color: #2a2a2a;
+$input-placeholder-color: #9a9285;
+$input-focus-border-color: $primary;
+$input-focus-box-shadow: 0 0 0 2px rgba($primary, 0.2);
+
+$card-bg: #ffffff;
+$card-border-color: #e0d5b8;
+$card-border-radius: 0.25rem;
+
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/bootstrap";
+
+body {
+  background-image: radial-gradient(rgba(30, 58, 95, 0.03) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+.divider {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1rem; margin: 2.5rem 0; color: $primary; font-size: 1.25rem;
+  font-family: $headings-font-family;
+  &::before, &::after {
+    content: ""; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, #d4c9ae, transparent);
+  }
+}
+.text-eyebrow {
+  text-transform: uppercase; letter-spacing: 0.3em;
+  font-size: 0.72rem; font-weight: 600; color: $primary;
+}
+.text-display {
+  font-family: $headings-font-family; font-weight: 500;
+  line-height: 1.15; letter-spacing: 0.005em; color: #1a2332;
+}
+.surface {
+  background-color: #ffffff;
+  border: 1px solid #e0d5b8;
+  border-radius: $border-radius-lg; padding: 2rem;
+  box-shadow: 0 1px 2px rgba(30, 58, 95, 0.04);
+  position: relative;
+  &::before {
+    content: ""; position: absolute; inset: 6px;
+    border: 1px solid rgba(201, 169, 97, 0.2);
+    border-radius: 1px;
+    pointer-events: none;
+  }
+}
+.accent-text { color: $primary !important; }
+.hero-glow {
+  position: relative; isolation: isolate;
+  &::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+            radial-gradient(ellipse at 50% 0%, rgba($primary, 0.1), transparent 60%),
+            radial-gradient(circle at 50% 50%, rgba($secondary, 0.04), transparent 70%);
+    pointer-events: none; z-index: -1;
+  }
+}
+.tag {
+  display: inline-flex; align-items: center; padding: 0.3em 0.85em;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; border-radius: 0;
+  background: transparent; color: $primary;
+  border: 1px solid $primary;
+  font-family: $font-family-serif;
+}
+.glow { box-shadow: 0 0 0 1px rgba($primary, 0.2), 0 6px 20px rgba($secondary, 0.1); }
+
+[data-theme="religion"] {
+  .navbar {
+    --bs-navbar-color: #1a2332;
+    --bs-navbar-hover-color: #{$primary};
+    --bs-navbar-active-color: #{$primary};
+    --bs-navbar-brand-color: #1a2332;
+    --bs-navbar-brand-hover-color: #{$primary};
+  }
+  .navbar-brand {
+    font-family: $headings-font-family;
+    letter-spacing: 0.05em; font-size: 1.4rem;
+  }
+  .nav-tabs {
+    --bs-nav-link-color: #6b665a;
+    --bs-nav-link-hover-color: #{$primary};
+    --bs-nav-tabs-link-active-color: #{$primary};
+    --bs-nav-tabs-link-active-border-color: #{$primary};
+  }
+  .nav-link {
+    letter-spacing: 0.08em; font-size: 0.88rem;
+    &:hover { color: $primary; }
+    &.active { color: $primary; }
+  }
+}

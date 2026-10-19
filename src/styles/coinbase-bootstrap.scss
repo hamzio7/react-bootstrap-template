@@ -1,0 +1,111 @@
+@import "bootstrap/scss/functions";
+
+$primary:   #0052ff;
+$secondary: #5b616e;
+$success:   #05b169;
+$info:      #0052ff;
+$warning:   #f4b000;
+$danger:    #cf202f;
+$light:     #f7f7f7;
+$dark:      #0a0b0d;
+
+$theme-colors: (
+        "primary": $primary, "secondary": $secondary, "success": $success,
+        "info": $info, "warning": $warning, "danger": $danger,
+        "light": $light, "dark": $dark
+);
+
+$body-bg:              #ffffff;
+$body-color:           #0a0b0d;
+$body-secondary-color: #5b616e;
+$body-secondary-bg:    #f7f7f7;
+
+$font-family-sans-serif: 'Coinbase Sans', -apple-system, system-ui, sans-serif;
+$headings-font-family:   'Coinbase Display', 'Coinbase Sans', sans-serif;
+$headings-font-weight:   400;
+$headings-color:         #0a0b0d;
+$font-size-base:         1rem;
+
+$border-radius:    0.5rem;
+$border-radius-sm: 0.25rem;
+$border-radius-lg: 1rem;
+$border-radius-xl: 1.5rem;
+$border-radius-pill: 9999px;
+$border-color: #dee1e6;
+$box-shadow-sm: 0 1px 2px rgba(10, 11, 13, 0.05);
+$box-shadow:    0 4px 16px rgba(10, 11, 13, 0.08);
+$box-shadow-lg: 0 12px 32px rgba(10, 11, 13, 0.12);
+
+$link-color: $primary;
+$link-hover-color: #003ecc;
+$link-decoration: none;
+
+$input-bg: #ffffff;
+$input-border-color: #dee1e6;
+$input-color: #0a0b0d;
+$input-placeholder-color: #7c828a;
+$input-focus-border-color: $primary;
+$input-focus-box-shadow: 0 0 0 3px rgba($primary, 0.15);
+
+$card-bg: #ffffff;
+$card-border-color: #eef0f3;
+$card-border-radius: 1rem;
+
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/bootstrap";
+
+.divider {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.75rem; margin: 2rem 0; color: $primary; font-size: 1rem;
+  &::before, &::after {
+    content: ""; flex: 1; height: 1px; background: #dee1e6;
+  }
+}
+.text-eyebrow {
+  text-transform: uppercase; letter-spacing: 0.12em;
+  font-size: 0.7rem; font-weight: 600; color: $secondary;
+}
+.text-display {
+  font-family: $headings-font-family; font-weight: 400;
+  line-height: 1.0; letter-spacing: -0.025em; color: #0a0b0d;
+}
+.surface {
+  background-color: #ffffff; border: 1px solid #eef0f3;
+  border-radius: $border-radius-lg; padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(10, 11, 13, 0.06);
+}
+.accent-text { color: $primary !important; }
+.hero-glow {
+  position: relative; isolation: isolate;
+  &::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba($primary, 0.08), transparent 60%);
+    pointer-events: none; z-index: -1;
+  }
+}
+.tag {
+  display: inline-flex; align-items: center; padding: 0.25em 0.7em;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; border-radius: $border-radius-pill;
+  background-color: rgba($primary, 0.08); color: $primary;
+  border: 1px solid rgba($primary, 0.15);
+}
+.glow { box-shadow: 0 0 0 1px rgba($primary, 0.15), 0 8px 24px rgba($primary, 0.1); }
+
+[data-theme="coinbase"] {
+  .navbar {
+    --bs-navbar-color: #0a0b0d;
+    --bs-navbar-hover-color: #{$primary};
+    --bs-navbar-active-color: #{$primary};
+    --bs-navbar-brand-color: #0a0b0d;
+    --bs-navbar-brand-hover-color: #{$primary};
+  }
+  .nav-tabs {
+    --bs-nav-link-color: #5b616e;
+    --bs-nav-link-hover-color: #{$primary};
+    --bs-nav-tabs-link-active-color: #0a0b0d;
+    --bs-nav-tabs-link-active-border-color: #{$primary};
+  }
+  .nav-link { &:hover { color: $primary; } &.active { color: $primary; } }
+}

@@ -1,0 +1,114 @@
+@import "bootstrap/scss/functions";
+
+// --- Palette ---
+$primary:   #6366f1;
+$secondary: #64748b;
+$success:   #10b981;
+$info:      #06b6d4;
+$warning:   #f59e0b;
+$danger:    #ef4444;
+$light:     #f8fafc;
+$dark:      #1e293b;
+
+$theme-colors: (
+        "primary": $primary, "secondary": $secondary, "success": $success,
+        "info": $info, "warning": $warning, "danger": $danger,
+        "light": $light, "dark": $dark
+);
+
+// --- Typography ---
+$font-family-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif;
+$headings-font-weight: 600;
+
+// --- Radius & Shadows ---
+$border-radius: 0.75rem;
+$border-radius-sm: 0.5rem;
+$border-radius-lg: 1rem;
+$border-radius-xl: 1.5rem;
+$border-radius-2xl: 2rem;
+$box-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$box-shadow:    0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+$box-shadow-lg: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+
+// --- Bootstrap ---
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/bootstrap";
+
+// ============================================================
+// STANDARD UTILITIES
+// ============================================================
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem 0;
+  color: $primary;
+  font-size: 1rem;
+
+  &::before,
+  &::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #e2e8f0, transparent);
+  }
+}
+
+.text-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: $primary;
+}
+
+.text-display {
+  font-family: $headings-font-family;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.surface {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: $border-radius-lg;
+  padding: 1.5rem;
+  box-shadow: $box-shadow-sm;
+}
+
+.accent-text { color: $primary !important; }
+
+.hero-glow {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba($primary, 0.12) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3em 0.7em;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: $border-radius-pill;
+  background-color: rgba($primary, 0.1);
+  color: $primary;
+  border: 1px solid rgba($primary, 0.2);
+}
+
+.glow {
+  box-shadow: 0 0 0 1px rgba($primary, 0.15), 0 4px 20px rgba($primary, 0.15);
+}

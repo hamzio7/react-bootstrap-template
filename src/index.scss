@@ -1,0 +1,262 @@
+// src/styles/scifi-bootstrap.scss
+
+// 1. Bootstrap's functions must come first
+@import "bootstrap/scss/functions";
+
+// ==========================================================================
+// FUTURISTIC SCI-FI THEME OVERRIDES
+// ==========================================================================
+
+// --- Core Palette (Neon on Deep Space) ---
+$primary:   #00f0ff;   // electric cyan
+$secondary: #7c3aed;   // electric violet
+$success:   #22ff88;   // neon green
+$info:      #00d9ff;   // ice blue
+$warning:   #ffb800;   // amber
+$danger:    #ff2e63;   // neon red
+$light:     #e6f1ff;   // frost white
+$dark:      #05070d;   // void black
+
+$theme-colors: (
+        "primary":   $primary,
+        "secondary": $secondary,
+        "success":   $success,
+        "info":      $info,
+        "warning":   $warning,
+        "danger":    $danger,
+        "light":     $light,
+        "dark":      $dark
+);
+
+// --- Body Background ---
+$body-bg:                #0a0e1a;  // deep space navy
+$body-color:             #c9d1e1;  // cool starlight gray
+$body-secondary-color:   #8a94a8;
+$body-secondary-bg:      #131826;
+$body-tertiary-color:    #56607a;
+
+// --- Typography ---
+$font-family-sans-serif: 'Rajdhani', system-ui, sans-serif;
+$font-family-monospace:  'Share Tech Mono', 'JetBrains Mono', monospace;
+$headings-font-family:   'Orbitron', $font-family-sans-serif;
+$headings-font-weight:   700;
+$font-size-base:         1.05rem;
+
+// --- Borders & Radius ---
+// Slightly sharper corners than the modern theme; still soft enough for UI.
+$border-radius:    0.4rem;
+$border-radius-sm: 0.25rem;
+$border-radius-lg: 0.6rem;
+$border-radius-xl: 0.8rem;
+$border-radius-2xl: 1.2rem;
+$border-radius-pill: 50rem;
+
+// --- Global Shadows (Neon Glows) ---
+$box-shadow-sm: 0 0 4px rgba($primary, 0.2);
+$box-shadow:    0 0 12px rgba($primary, 0.2), 0 0 2px rgba($primary, 0.4);
+$box-shadow-lg: 0 0 24px rgba($primary, 0.35), 0 0 6px rgba($primary, 0.5);
+
+// --- Links ---
+$link-color:       $primary;
+$link-hover-color: #66f7ff; // pre-lightened primary (avoids deprecated lighten())
+$link-decoration:  none;
+
+// --- Buttons ---
+$btn-border-radius:  $border-radius;
+$btn-font-weight:    600;
+$btn-font-size:      0.95rem;
+
+// --- Cards ---
+$card-bg:             #0f1420;
+$card-border-color:   rgba($primary, 0.2);
+$card-border-radius:  $border-radius-lg;
+$card-cap-bg:         rgba($primary, 0.06);
+$card-color:          $body-color;
+
+// --- Navbar (dark variant used in demo) ---
+$navbar-dark-color:         rgba($light, 0.85);
+$navbar-dark-hover-color:   $primary;
+$navbar-dark-active-color:  $primary;
+
+// --- Modal ---
+$modal-content-bg:            #0f1420;
+$modal-content-border-color:  rgba($primary, 0.35);
+
+// --- Form Controls ---
+$input-bg:                  #0d121c;
+$input-border-color:        rgba($primary, 0.2);
+$input-color:               #e6f1ff;
+$input-placeholder-color:   #56607a;
+$input-focus-border-color:  $primary;
+$input-focus-box-shadow:    0 0 0 0.2rem rgba($primary, 0.25), 0 0 12px rgba($primary, 0.4);
+
+// --- Dropdown ---
+$dropdown-bg:               #0f1420;
+$dropdown-border-color:     rgba($primary, 0.25);
+$dropdown-link-color:       #c9d1e1;
+$dropdown-link-hover-bg:    rgba($primary, 0.1);
+$dropdown-link-hover-color: $primary;
+
+// --- Accordion ---
+$accordion-bg:                    #0f1420;
+$accordion-border-color:          rgba($primary, 0.2);
+$accordion-button-color:          #c9d1e1;
+$accordion-button-bg:             #0f1420;
+$accordion-button-active-bg:      rgba($primary, 0.08);
+$accordion-button-active-color:   $primary;
+$accordion-icon-color:            $primary;
+$accordion-icon-active-color:     $primary;
+
+// --- Table ---
+$table-color:               #c9d1e1;
+$table-bg:                  transparent;
+$table-border-color:        rgba($primary, 0.15);
+$table-striped-bg:          rgba($primary, 0.04);
+$table-hover-bg:            rgba($primary, 0.08);
+
+// --- Progress ---
+$progress-bg:               #131826;
+$progress-bar-bg:           $primary;
+
+// --- Tooltip / Popover / Toast ---
+$tooltip-bg:                #05070d;
+$tooltip-color:             $primary;
+$popover-bg:                #0f1420;
+$popover-border-color:      rgba($primary, 0.3);
+$toast-bg:                  #0f1420;
+$toast-border-color:        rgba($primary, 0.25);
+
+// --- Badges ---
+$badge-font-weight: 700;
+
+// --- Global Border Color ---
+$border-color: rgba($primary, 0.15);
+
+// ==========================================================================
+// 2. Bootstrap's variables & mixins
+// ==========================================================================
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/bootstrap";
+
+// ==========================================================================
+// 3. SCI-FI EXTRAS (glow effects & textures)
+// ==========================================================================
+
+// --- Body: subtle circuit-grid background ---
+body {
+  background-color: $body-bg;
+  background-image:
+          linear-gradient(rgba($primary, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba($primary, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+// --- Headings: uppercase + glow ---
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 10px rgba($primary, 0.35);
+}
+
+// --- Buttons: uppercase, glowing ---
+.btn {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: box-shadow 0.2s ease, transform 0.1s ease;
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.btn-primary {
+  box-shadow: 0 0 12px rgba($primary, 0.5), 0 0 2px rgba($primary, 0.8);
+  text-shadow: 0 0 6px rgba($primary, 0.6);
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 22px rgba($primary, 0.85), 0 0 4px rgba($primary, 1);
+  }
+}
+
+.btn-outline-primary {
+  text-shadow: 0 0 6px rgba($primary, 0.5);
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 16px rgba($primary, 0.6);
+  }
+}
+
+// --- Cards: glowing edges + backdrop blur ---
+.card {
+  box-shadow:
+          0 0 0 1px rgba($primary, 0.15),
+          0 0 24px rgba($primary, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+// --- Navbar: glowing bottom border ---
+.navbar {
+  border-bottom: 1px solid rgba($primary, 0.3);
+  box-shadow: 0 2px 24px rgba($primary, 0.18);
+  backdrop-filter: blur(10px);
+}
+
+// --- Form controls: focus glow ---
+.form-control:focus,
+.form-select:focus {
+  box-shadow:
+          0 0 0 0.2rem rgba($primary, 0.25),
+          0 0 12px rgba($primary, 0.35);
+}
+
+// --- Alerts: neon border ---
+.alert {
+  border-width: 1px;
+  border-left-width: 4px;
+  backdrop-filter: blur(6px);
+}
+
+// --- Modal: neon border and backdrop ---
+.modal-content {
+  box-shadow:
+          0 0 0 1px rgba($primary, 0.3),
+          0 0 40px rgba($primary, 0.25);
+}
+
+.modal-backdrop.show {
+  opacity: 0.7;
+  background-color: #05070d;
+}
+
+// --- Code & monospace accents ---
+code, pre, kbd, samp {
+  color: $primary;
+  text-shadow: 0 0 6px rgba($primary, 0.35);
+}
+
+// --- Selection color ---
+::selection {
+  background-color: rgba($primary, 0.35);
+  color: #ffffff;
+}
+
+// --- Scrollbar (WebKit) ---
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0e1a;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba($primary, 0.3);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba($primary, 0.6);
+}

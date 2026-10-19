@@ -1,0 +1,132 @@
+@import "bootstrap/scss/functions";
+
+$primary:   #3d5a3d;
+$secondary: #8b6f47;
+$success:   #4a7c59;
+$info:      #5a7d8c;
+$warning:   #c98f3e;
+$danger:    #a5413a;
+$light:     #f4f0e6;
+$dark:      #2d3a2d;
+
+$theme-colors: (
+        "primary": $primary, "secondary": $secondary, "success": $success,
+        "info": $info, "warning": $warning, "danger": $danger,
+        "light": $light, "dark": $dark
+);
+
+$body-bg:              #f4f0e6;
+$body-color:           #2d3a2d;
+$body-secondary-color: #6b6355;
+$body-secondary-bg:    #ebe4d4;
+
+$font-family-sans-serif: 'Work Sans', system-ui, sans-serif;
+$font-family-serif:      'Fraunces', Georgia, serif;
+$headings-font-family:   'Fraunces', Georgia, serif;
+$headings-font-weight:   600;
+$headings-color:         #2d3a2d;
+$font-size-base:         1rem;
+
+$border-radius:    0.5rem;
+$border-radius-sm: 0.25rem;
+$border-radius-lg: 0.75rem;
+$border-radius-pill: 9999px;
+$border-color: #d8cdb6;
+$box-shadow-sm: 0 1px 2px rgba(45, 58, 45, 0.06);
+$box-shadow:    0 2px 8px rgba(45, 58, 45, 0.1);
+$box-shadow-lg: 0 8px 24px rgba(45, 58, 45, 0.15);
+
+$link-color: $primary;
+$link-hover-color: #2d472d;
+$link-decoration: underline;
+$link-decoration-thickness: 1px;
+$link-underline-offset: 3px;
+
+$input-bg: #ffffff;
+$input-border-color: #d8cdb6;
+$input-color: #2d3a2d;
+$input-placeholder-color: #9b9280;
+$input-focus-border-color: $primary;
+$input-focus-box-shadow: 0 0 0 3px rgba($primary, 0.15);
+
+$card-bg: #ffffff;
+$card-border-color: #d8cdb6;
+$card-border-radius: 0.75rem;
+
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/bootstrap";
+
+body {
+  background-image: radial-gradient(rgba(61, 90, 61, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.divider {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1rem; margin: 2.5rem 0; color: $primary; font-size: 1.25rem;
+  font-family: $headings-font-family;
+  &::before, &::after {
+    content: ""; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, #d8cdb6, transparent);
+  }
+}
+.text-eyebrow {
+  text-transform: uppercase; letter-spacing: 0.15em;
+  font-size: 0.72rem; font-weight: 600; color: $secondary;
+}
+.text-display {
+  font-family: $headings-font-family; font-weight: 600;
+  line-height: 1.1; letter-spacing: -0.01em; color: #2d3a2d;
+}
+.surface {
+  background-color: #ffffff;
+  border: 1px solid #d8cdb6;
+  border-radius: $border-radius-lg; padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(45, 58, 45, 0.06);
+}
+.accent-text { color: $primary !important; }
+.hero-glow {
+  position: relative; isolation: isolate;
+  &::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+            radial-gradient(ellipse at 30% 20%, rgba($primary, 0.12), transparent 50%),
+            radial-gradient(ellipse at 70% 80%, rgba($secondary, 0.1), transparent 50%),
+            repeating-linear-gradient(45deg, transparent 0 40px, rgba($primary, 0.02) 40px 41px);
+    pointer-events: none; z-index: -1;
+  }
+}
+.tag {
+  display: inline-flex; align-items: center; padding: 0.3em 0.75em;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; border-radius: $border-radius-pill;
+  background-color: rgba($primary, 0.1); color: $primary;
+  border: 1px solid rgba($primary, 0.25);
+}
+.glow { box-shadow: 0 0 0 1px rgba($primary, 0.2), 0 6px 20px rgba($primary, 0.15); }
+
+[data-theme="nature"] {
+  .navbar {
+    --bs-navbar-color: #2d3a2d;
+    --bs-navbar-hover-color: #{$secondary};
+    --bs-navbar-active-color: #{$primary};
+    --bs-navbar-brand-color: #2d3a2d;
+    --bs-navbar-brand-hover-color: #{$primary};
+  }
+  .navbar-brand {
+    font-family: $headings-font-family;
+    font-size: 1.4rem; letter-spacing: 0.01em;
+  }
+  .nav-tabs {
+    --bs-nav-link-color: #6b6355;
+    --bs-nav-link-hover-color: #{$primary};
+    --bs-nav-tabs-link-active-color: #{$primary};
+    --bs-nav-tabs-link-active-border-color: #{$primary};
+  }
+  .nav-link {
+    letter-spacing: 0.06em; font-size: 0.9rem;
+    &:hover { color: $secondary; }
+    &.active { color: $primary; }
+  }
+}

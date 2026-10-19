@@ -1,0 +1,147 @@
+@import "bootstrap/scss/functions";
+
+$primary:   #a78bfa;
+$secondary: #f0abfc;
+$success:   #6ee7b7;
+$info:      #67e8f9;
+$warning:   #fcd34d;
+$danger:    #fb7185;
+$light:     #f5f0ff;
+$dark:      #1e1b4b;
+
+$theme-colors: (
+        "primary": $primary, "secondary": $secondary, "success": $success,
+        "info": $info, "warning": $warning, "danger": $danger,
+        "light": $light, "dark": $dark
+);
+
+$body-bg:              #1e1b4b;
+$body-color:           #e8e2ff;
+$body-secondary-color: #b0a8d0;
+$body-secondary-bg:    rgba(255, 255, 255, 0.06);
+
+$font-family-sans-serif: 'Inter', system-ui, sans-serif;
+$headings-font-family:   'Inter', sans-serif;
+$headings-font-weight:   600;
+$headings-color:         #f5f0ff;
+
+$border-radius: 1rem;
+$border-radius-sm: 0.75rem;
+$border-radius-lg: 1.25rem;
+$border-radius-xl: 1.75rem;
+$border-color: rgba(255, 255, 255, 0.15);
+$box-shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.15);
+$box-shadow:    0 8px 32px rgba(0, 0, 0, 0.2);
+$box-shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.3);
+
+$link-color: $primary;
+$link-hover-color: #c4b5fd;
+$link-decoration: none;
+
+$input-bg: rgba(255, 255, 255, 0.06);
+$input-border-color: rgba(255, 255, 255, 0.15);
+$input-color: #e8e2ff;
+$input-placeholder-color: #7a7090;
+$input-focus-border-color: $primary;
+$input-focus-box-shadow: 0 0 0 3px rgba($primary, 0.3);
+
+$card-bg: rgba(255, 255, 255, 0.06);
+$card-border-color: rgba(255, 255, 255, 0.15);
+$card-border-radius: 1.25rem;
+
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/bootstrap";
+
+// Fixed gradient backdrop
+html, body {
+  background:
+          radial-gradient(ellipse at 20% 20%, #4c1d95 0%, transparent 50%),
+          radial-gradient(ellipse at 80% 80%, #831843 0%, transparent 50%),
+          linear-gradient(135deg, #1e1b4b 0%, #2e1065 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.divider {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.75rem; margin: 2rem 0; color: #f5f0ff; font-size: 1.1rem;
+  &::before, &::after {
+    content: ""; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+  }
+}
+.text-eyebrow {
+  text-transform: uppercase; letter-spacing: 0.2em;
+  font-size: 0.72rem; font-weight: 600; color: $secondary;
+}
+.text-display {
+  font-family: $headings-font-family; font-weight: 600;
+  line-height: 1.15; letter-spacing: -0.02em; color: #f5f0ff;
+}
+.surface {
+  background-color: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: $border-radius-lg; padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+.accent-text { color: $secondary !important; }
+.hero-glow {
+  position: relative; isolation: isolate;
+  &::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+            radial-gradient(ellipse at 30% 30%, rgba($primary, 0.2), transparent 50%),
+            radial-gradient(ellipse at 70% 70%, rgba($secondary, 0.15), transparent 50%);
+    pointer-events: none; z-index: -1;
+  }
+}
+.tag {
+  display: inline-flex; align-items: center; padding: 0.3em 0.85em;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; border-radius: $border-radius-pill;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #f5f0ff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+.glow { box-shadow: 0 0 0 1px rgba($primary, 0.3), 0 10px 30px rgba($primary, 0.3); }
+
+// Extra glass for Bootstrap components
+.card, .modal-content, .dropdown-menu, .toast {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+[data-theme="glass"] {
+  .navbar {
+    --bs-navbar-color: #e8e2ff;
+    --bs-navbar-hover-color: #{$secondary};
+    --bs-navbar-active-color: #{$secondary};
+    --bs-navbar-brand-color: #f5f0ff;
+    --bs-navbar-brand-hover-color: #{$secondary};
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23f0abfc' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background: rgba(30, 27, 75, 0.4) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .nav-tabs {
+    --bs-nav-link-color: #{$body-secondary-color};
+    --bs-nav-link-hover-color: #{$secondary};
+    --bs-nav-tabs-link-active-color: #f5f0ff;
+  }
+  .nav-link { &:hover { color: $secondary; } &.active { color: #f5f0ff; } }
+  .btn-outline-secondary {
+    color: #e8e2ff;
+    border-color: rgba(255, 255, 255, 0.25);
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.4);
+      color: #f5f0ff;
+    }
+  }
+}

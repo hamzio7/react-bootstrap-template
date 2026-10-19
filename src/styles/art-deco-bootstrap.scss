@@ -1,0 +1,133 @@
+@import "bootstrap/scss/functions";
+
+$primary:   #d4af37;
+$secondary: #065f46;
+$success:   #065f46;
+$info:      #1e40af;
+$warning:   #d4af37;
+$danger:    #991b1b;
+$light:     #e8d5a8;
+$dark:      #0f0d0a;
+
+$theme-colors: (
+        "primary": $primary, "secondary": $secondary, "success": $success,
+        "info": $info, "warning": $warning, "danger": $danger,
+        "light": $light, "dark": $dark
+);
+
+$body-bg:              #0f0d0a;
+$body-color:           #e8d5a8;
+$body-secondary-color: #9a8a6a;
+$body-secondary-bg:    #1a1612;
+
+$font-family-sans-serif: 'Inter', system-ui, sans-serif;
+$headings-font-family:   'Playfair Display', Georgia, serif;
+$headings-font-weight:   700;
+$headings-color:         #e8d5a8;
+
+$border-radius: 0;
+$border-radius-sm: 0;
+$border-radius-lg: 0;
+$border-color: #3a3020;
+$box-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+$box-shadow:    0 4px 16px rgba(0, 0, 0, 0.5);
+$box-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.7);
+
+$link-color: $primary;
+$link-hover-color: #f0c85a;
+$link-decoration: none;
+
+$input-bg: #1a1612;
+$input-border-color: #3a3020;
+$input-color: #e8d5a8;
+$input-placeholder-color: #6a5a3a;
+$input-focus-border-color: $primary;
+$input-focus-box-shadow: 0 0 0 2px rgba($primary, 0.3);
+
+$card-bg: #1a1612;
+$card-border-color: #3a3020;
+$card-border-radius: 0;
+
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/bootstrap";
+
+.divider {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1.5rem; margin: 2.5rem 0;
+  color: $primary; font-size: 1.2rem;
+  font-family: $headings-font-family;
+  &::before, &::after {
+    content: ""; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, $primary, transparent);
+  }
+}
+.text-eyebrow {
+  text-transform: uppercase; letter-spacing: 0.35em;
+  font-size: 0.7rem; font-weight: 600;
+  color: $primary;
+  font-family: $font-family-sans-serif;
+}
+.text-display {
+  font-family: $headings-font-family; font-weight: 700;
+  line-height: 1.1; letter-spacing: 0.01em;
+  color: #e8d5a8;
+}
+.surface {
+  background-color: #1a1612;
+  border: 1px solid #3a3020;
+  border-top: 2px solid $primary;
+  border-radius: 0; padding: 1.75rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+.accent-text { color: $primary !important; }
+.hero-glow {
+  position: relative; isolation: isolate;
+  &::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+            radial-gradient(ellipse at 50% 100%, rgba($primary, 0.15), transparent 60%),
+            repeating-linear-gradient(
+                    90deg,
+                    transparent 0, transparent 40px,
+                    rgba(212, 175, 55, 0.04) 40px, rgba(212, 175, 55, 0.04) 41px
+            );
+    pointer-events: none; z-index: -1;
+  }
+}
+.tag {
+  display: inline-flex; align-items: center; padding: 0.3em 0.85em;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; border-radius: 0;
+  background: transparent; color: $primary;
+  border: 1px solid $primary;
+  font-family: $font-family-sans-serif;
+}
+.glow { box-shadow: 0 0 0 1px $primary, 0 8px 20px rgba($primary, 0.2); }
+
+[data-theme="art-deco"] {
+  .navbar {
+    --bs-navbar-color: #{$body-color};
+    --bs-navbar-hover-color: #{$primary};
+    --bs-navbar-active-color: #{$primary};
+    --bs-navbar-brand-color: #{$body-color};
+    --bs-navbar-brand-hover-color: #{$primary};
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23d4af37' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+  .navbar { border-bottom: 2px solid $primary; }
+  .navbar-brand {
+    font-family: $headings-font-family;
+    letter-spacing: 0.1em; text-transform: uppercase; font-size: 1.2rem;
+  }
+  .nav-tabs {
+    --bs-nav-link-color: #{$body-secondary-color};
+    --bs-nav-link-hover-color: #{$primary};
+    --bs-nav-tabs-link-active-color: #{$primary};
+  }
+  .nav-link {
+    text-transform: uppercase; letter-spacing: 0.2em;
+    font-size: 0.8rem; font-weight: 500;
+    &:hover { color: $primary; }
+    &.active { color: $primary; }
+  }
+}

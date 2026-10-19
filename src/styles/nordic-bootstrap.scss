@@ -1,0 +1,121 @@
+@import "bootstrap/scss/functions";
+
+$primary:   #5b7c8d;
+$secondary: #8b9aa7;
+$success:   #6d9375;
+$info:      #7fa2b5;
+$warning:   #d4a15a;
+$danger:    #b85c5c;
+$light:     #f7f6f3;
+$dark:      #2c3338;
+
+$theme-colors: (
+        "primary": $primary, "secondary": $secondary, "success": $success,
+        "info": $info, "warning": $warning, "danger": $danger,
+        "light": $light, "dark": $dark
+);
+
+$body-bg:              #f7f6f3;
+$body-color:           #2c3338;
+$body-secondary-color: #6f7a80;
+$body-secondary-bg:    #efede6;
+
+$font-family-sans-serif: 'Work Sans', 'Inter', system-ui, sans-serif;
+$headings-font-family:   'Work Sans', sans-serif;
+$headings-font-weight:   500;
+$headings-letter-spacing: 0.01em;
+$font-size-base:         1rem;
+
+$border-radius: 0.125rem;
+$border-radius-sm: 0.0625rem;
+$border-radius-lg: 0.25rem;
+$border-color: #dcd8cc;
+$box-shadow-sm: none;
+$box-shadow:    none;
+$box-shadow-lg: 0 12px 32px -16px rgba(44,51,56,0.15);
+
+$link-color: $primary;
+$link-hover-color: #476575;
+$link-decoration: none;
+$link-hover-decoration: underline;
+$link-underline-offset: 3px;
+
+$input-bg: #ffffff;
+$input-border-color: #dcd8cc;
+$input-focus-border-color: $primary;
+$input-focus-box-shadow: 0 0 0 2px rgba($primary, 0.15);
+
+$card-bg: #ffffff;
+$card-border-color: #dcd8cc;
+$card-border-radius: 0.25rem;
+
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/bootstrap";
+
+// STANDARD UTILITIES
+.divider {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1rem; margin: 3rem 0; color: $primary; font-size: 0.9rem;
+  &::before, &::after {
+    content: ""; flex: 1; height: 1px; background: #dcd8cc;
+  }
+}
+.text-eyebrow {
+  text-transform: uppercase; letter-spacing: 0.22em;
+  font-size: 0.7rem; font-weight: 500;
+  color: $primary;
+}
+.text-display {
+  font-family: $headings-font-family; font-weight: 500;
+  line-height: 1.15; letter-spacing: 0.005em; color: $body-color;
+}
+.surface {
+  background-color: #ffffff;
+  border: 1px solid #dcd8cc;
+  border-radius: $border-radius-lg;
+  padding: 2rem;
+  box-shadow: none;
+}
+.accent-text { color: $primary !important; }
+.hero-glow {
+  position: relative; isolation: isolate;
+  &::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 100%, rgba($primary, 0.06), transparent 60%);
+    pointer-events: none; z-index: -1;
+  }
+}
+.tag {
+  display: inline-flex; align-items: center;
+  padding: 0.35em 0.85em;
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em;
+  text-transform: uppercase; border-radius: 0;
+  background: transparent; color: $primary;
+  border: 1px solid $primary;
+}
+.glow {
+  box-shadow: 0 8px 24px -8px rgba($primary, 0.3);
+}
+
+// SPECIFICITY FIX
+[data-theme="nordic"] {
+  .navbar {
+    --bs-navbar-color: #{$body-color};
+    --bs-navbar-hover-color: #{$primary};
+    --bs-navbar-active-color: #{$primary};
+    --bs-navbar-brand-color: #{$body-color};
+    --bs-navbar-brand-hover-color: #{$primary};
+  }
+  .nav-tabs {
+    --bs-nav-link-color: #{$body-secondary-color};
+    --bs-nav-link-hover-color: #{$primary};
+    --bs-nav-tabs-link-active-color: #{$primary};
+  }
+  .nav-link {
+    letter-spacing: 0.08em;
+    font-size: 0.88rem;
+    &:hover { color: $primary; }
+    &.active { color: $primary; }
+  }
+}

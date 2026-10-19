@@ -1,0 +1,324 @@
+@import "bootstrap/scss/functions";
+
+$primary:   #ffe600;
+$secondary: #000000;
+$success:   #00ff00;
+$info:      #00ccff;
+$warning:   #ff8800;
+$danger:    #ff0033;
+$light:     #ffffff;
+$dark:      #000000;
+
+$theme-colors: (
+        "primary": $primary, "secondary": $secondary, "success": $success,
+        "info": $info, "warning": $warning, "danger": $danger,
+        "light": $light, "dark": $dark
+);
+
+$body-bg:              #f5f5f0;
+$body-color:           #000000;
+$body-secondary-color: #333333;
+$body-secondary-bg:    #ffffff;
+
+$font-family-sans-serif: 'Space Grotesk', 'JetBrains Mono', monospace;
+$font-family-monospace:  'JetBrains Mono', monospace;
+$headings-font-family:   'Space Grotesk', sans-serif;
+$headings-font-weight:   700;
+$font-size-base:         1rem;
+
+$border-radius: 0;
+$border-radius-sm: 0;
+$border-radius-lg: 0;
+$border-color: #000000;
+$border-width: 2px;
+$box-shadow-sm: 3px 3px 0 #000000;
+$box-shadow:    4px 4px 0 #000000;
+$box-shadow-lg: 8px 8px 0 #000000;
+
+$link-color: $body-color;
+$link-hover-color: #ff0033;
+$link-decoration: underline;
+$link-decoration-thickness: 2px;
+$link-underline-offset: 3px;
+
+$input-bg: #ffffff;
+$input-border-color: #000000;
+$input-border-width: 2px;
+$input-focus-border-color: #000000;
+$input-focus-box-shadow: 4px 4px 0 #000000;
+
+$card-bg: #ffffff;
+$card-border-color: #000000;
+$card-border-width: 2px;
+$card-border-radius: 0;
+
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/bootstrap";
+
+// STANDARD UTILITIES
+.divider {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1rem; margin: 2.5rem 0;
+  color: #000000; font-size: 1.5rem;
+  font-family: $headings-font-family;
+  font-weight: 700;
+  &::before, &::after {
+    content: ""; flex: 1; height: 4px; background: #000000;
+  }
+}
+.text-eyebrow {
+  text-transform: uppercase; letter-spacing: 0.1em;
+  font-size: 0.72rem; font-weight: 700;
+  color: #000000;
+  background: $primary;
+  padding: 0.1em 0.4em;
+  display: inline-block;
+}
+.text-display {
+  font-family: $headings-font-family; font-weight: 700;
+  line-height: 0.95; letter-spacing: -0.04em;
+  color: #000000;
+}
+.surface {
+  background-color: #ffffff;
+  border: 3px solid #000000;
+  border-radius: 0;
+  padding: 1.5rem;
+  box-shadow: 6px 6px 0 #000000;
+}
+.accent-text {
+  color: #000000 !important;
+  background: $primary;
+  padding: 0 0.15em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.hero-glow {
+  position: relative; isolation: isolate;
+  &::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+            repeating-linear-gradient(
+                    -45deg,
+                    transparent 0, transparent 20px,
+                    rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 21px
+            );
+    pointer-events: none; z-index: -1;
+  }
+}
+.tag {
+  display: inline-flex; align-items: center;
+  padding: 0.25em 0.65em;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em;
+  text-transform: uppercase; border-radius: 0;
+  background: $primary; color: #000000;
+  //border: 2px solid #000000;
+  //box-shadow: 2px 2px 0 #000000;
+}
+.glow {
+  box-shadow: 4px 4px 0 #000000;
+  transition: all 0.1s ease;
+  &:hover { box-shadow: 0 0 0 #000000; transform: translate(4px, 4px); }
+}
+
+// ============================================================
+// SPECIFICITY FIX + CONTRAST CORRECTIONS
+// ============================================================
+
+[data-theme="brutalist"] {
+
+  // ─── Navbar ──────────────────────────────────────────────
+  .navbar {
+    --bs-navbar-color: #000000;
+    --bs-navbar-hover-color: #ff0033;
+    --bs-navbar-active-color: #ff0033;
+    --bs-navbar-brand-color: #000000;
+    --bs-navbar-brand-hover-color: #ff0033;
+    --bs-navbar-toggler-border-color: #000000;
+    border-bottom: 3px solid #000000;
+  }
+
+  .navbar-brand {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  // ─── Nav links ───────────────────────────────────────────
+  .nav-link {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    &:hover { color: #ff0033; }
+    // NOTE: no `.active` rule here — tabs & pills manage active state via
+    // CSS variables (see below). Removing this was the red-on-yellow fix.
+  }
+
+  // Pills keep the punchy red-active identity
+  .nav-pills .nav-link.active {
+    color: #ffffff;
+    background-color: #ff0033;
+    border: 2px solid #000000;
+    box-shadow: 3px 3px 0 #000000;
+  }
+
+  // ─── Tabs: black text on yellow, thick black underline ───
+  .nav-tabs {
+    --bs-nav-link-color: #333333;
+    --bs-nav-link-hover-color: #000000;
+    --bs-nav-tabs-link-active-color: #000000;
+    --bs-nav-tabs-link-active-bg: #{$primary};
+    --bs-nav-tabs-link-active-border-color: #000000;
+    --bs-nav-tabs-border-color: #000000;
+    --bs-nav-tabs-border-width: 2px;
+    border-bottom: 2px solid #000000;
+
+    .nav-link {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: 2px solid transparent;
+      border-bottom-width: 0;
+
+      &:hover {
+        border-color: #000000;
+        border-bottom-width: 0;
+        background-color: #ffffff;
+      }
+
+      &.active {
+        color: #000000;          // ← fixes red-on-yellow
+        background-color: $primary;
+        border-color: #000000;
+        border-bottom-color: $primary;
+      }
+    }
+  }
+
+  // ─── Outline buttons: readable text, colored border ──────
+  // Black text with a variant-colored thick border + hard shadow.
+  // On hover, the button "fills in" with the variant color.
+  .btn-outline-primary,
+  .btn-outline-secondary,
+  .btn-outline-success,
+  .btn-outline-info,
+  .btn-outline-warning,
+  .btn-outline-danger {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background-color: #ffffff;
+    color: #000000;
+    border-width: 2px;
+    box-shadow: 3px 3px 0 #000000;
+    transition: all 0.1s ease;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: #000000;
+      border-color: #000000;
+      border-width: 2px;
+      box-shadow: 0 0 0 #000000;
+      transform: translate(3px, 3px);
+    }
+  }
+
+  // Per-variant border color + hover fill
+  .btn-outline-primary {
+    border-color: $primary;
+    &:hover, &:focus, &:active { background-color: $primary; }
+  }
+
+  .btn-outline-secondary {
+    border-color: $secondary;
+    &:hover, &:focus, &:active {
+      background-color: $secondary;
+      color: #ffffff;           // white text on black fill
+    }
+  }
+
+  .btn-outline-success {
+    border-color: $success;
+    &:hover, &:focus, &:active { background-color: $success; }
+  }
+
+  .btn-outline-info {
+    border-color: $info;
+    &:hover, &:focus, &:active { background-color: $info; }
+  }
+
+  .btn-outline-warning {
+    border-color: $warning;
+    &:hover, &:focus, &:active { background-color: $warning; }
+  }
+
+  .btn-outline-danger {
+    border-color: $danger;
+    &:hover, &:focus, &:active {
+      background-color: $danger;
+      color: #ffffff;           // white text on red fill
+    }
+  }
+
+  // ─── Solid buttons: add the brutalist hard shadow ────────
+  // Bootstrap already picks the right text color via color-contrast()
+  // (black on yellow/green/cyan, white on red/black).
+  .btn-primary,
+  .btn-secondary,
+  .btn-success,
+  .btn-info,
+  .btn-warning,
+  .btn-danger,
+  .btn-light,
+  .btn-dark {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 2px solid #000000;
+    box-shadow: 3px 3px 0 #000000;
+    transition: all 0.1s ease;
+
+    &:hover,
+    &:focus,
+    &:active {
+      border-color: #000000;
+      box-shadow: 0 0 0 #000000;
+      transform: translate(3px, 3px);
+    }
+  }
+
+  // ─── Badges: force readable text on every variant ────────
+  .badge {
+    border: 2px solid #000000;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    //box-shadow: 2px 2px 0 #000000;
+  }
+  .badge.bg-primary,
+  .badge.bg-success,
+  .badge.bg-info,
+  .badge.bg-warning,
+  .badge.bg-light { color: #000000 !important; }
+  .badge.bg-secondary,
+  .badge.bg-danger,
+  .badge.bg-dark  { color: #ffffff !important; }
+
+  // ─── Alerts: hard border + readable text ─────────────────
+  .alert {
+    border: 2px solid #000000;
+    font-weight: 500;
+  }
+  .alert-primary,
+  .alert-success,
+  .alert-info,
+  .alert-warning {
+    color: #000000;
+  }
+  .alert-secondary,
+  .alert-danger,
+  .alert-dark {
+    color: #ffffff;
+  }
+}

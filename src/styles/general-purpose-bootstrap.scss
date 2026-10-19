@@ -1,0 +1,109 @@
+@import "bootstrap/scss/functions";
+
+$primary:   #0d6efd;
+$secondary: #6c757d;
+$success:   #198754;
+$info:      #0dcaf0;
+$warning:   #ffc107;
+$danger:    #dc3545;
+$light:     #f8f9fa;
+$dark:      #212529;
+
+$theme-colors: (
+        "primary": $primary, "secondary": $secondary, "success": $success,
+        "info": $info, "warning": $warning, "danger": $danger,
+        "light": $light, "dark": $dark
+);
+
+$body-bg:              #ffffff;
+$body-color:           #212529;
+$body-secondary-color: #6c757d;
+$body-secondary-bg:    #f8f9fa;
+
+$font-family-sans-serif: 'Inter', system-ui, -apple-system, sans-serif;
+$headings-font-weight:   600;
+$font-size-base:         1rem;
+
+$border-radius: 0.375rem;
+$border-radius-sm: 0.25rem;
+$border-radius-lg: 0.5rem;
+$border-color: #dee2e6;
+$box-shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+$box-shadow:    0 2px 4px rgba(0,0,0,0.08);
+$box-shadow-lg: 0 8px 24px rgba(0,0,0,0.1);
+
+$link-color: $primary;
+$link-hover-color: #0b5ed7;
+$link-decoration: none;
+
+$input-bg: #ffffff;
+$input-border-color: #ced4da;
+$input-focus-border-color: lighten($primary, 15%);
+$input-focus-box-shadow: 0 0 0 0.25rem rgba($primary, 0.25);
+
+$card-bg: #ffffff;
+$card-border-color: #dee2e6;
+$card-border-radius: 0.5rem;
+
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/bootstrap";
+
+// STANDARD UTILITIES
+.divider {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.75rem; margin: 2rem 0; color: $secondary; font-size: 1rem;
+  &::before, &::after {
+    content: ""; flex: 1; height: 1px;
+    background: #dee2e6;
+  }
+}
+.text-eyebrow {
+  text-transform: uppercase; letter-spacing: 0.1em;
+  font-size: 0.72rem; font-weight: 600; color: $secondary;
+}
+.text-display {
+  font-family: $headings-font-family; font-weight: 600;
+  line-height: 1.15; letter-spacing: -0.02em; color: $body-color;
+}
+.surface {
+  background-color: #ffffff; border: 1px solid #dee2e6;
+  border-radius: $border-radius-lg; padding: 1.5rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+.accent-text { color: $primary !important; }
+.hero-glow {
+  position: relative; isolation: isolate;
+  &::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba($primary, 0.08), transparent 60%);
+    pointer-events: none; z-index: -1;
+  }
+}
+.tag {
+  display: inline-flex; align-items: center; padding: 0.25em 0.7em;
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.05em;
+  text-transform: uppercase; border-radius: $border-radius-pill;
+  background-color: rgba($primary, 0.1); color: $primary;
+  border: 1px solid rgba($primary, 0.2);
+}
+.glow {
+  box-shadow: 0 0 0 1px rgba($primary, 0.2), 0 6px 16px rgba($primary, 0.15);
+}
+
+// SPECIFICITY FIX
+[data-theme="general-purpose"] {
+  .navbar {
+    --bs-navbar-color: #{$body-color};
+    --bs-navbar-hover-color: #{$primary};
+    --bs-navbar-active-color: #{$primary};
+    --bs-navbar-brand-color: #{$body-color};
+    --bs-navbar-brand-hover-color: #{$primary};
+  }
+  .nav-tabs {
+    --bs-nav-link-color: #{$body-secondary-color};
+    --bs-nav-link-hover-color: #{$primary};
+    --bs-nav-tabs-link-active-color: #{$primary};
+  }
+  .nav-link { &:hover { color: $primary; } &.active { color: $primary; } }
+}
